@@ -10,4 +10,3 @@ for i in range(0,origin):
 
 
 print(sum(arr,0.0)/len(arr))
-
