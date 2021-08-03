@@ -2,20 +2,14 @@ from sys import stdin
 
 t = int(stdin.readline())
 
+arr = [25,10,5,1]
 for i in range(t):
-    q = 0
-    n = 0
-    d = 0
-    p = 0
+    rst = []
     input = int(stdin.readline())
-    q = input//25
-    if input%25 != 0:
-        input = input%25
-        d = input//10
-        if input%10 != 0:
-            input = input%10
-            n = input//5
-            if input%5 != 0:
-                input = input%5
-                p = input//1
-    print(q,d,n,p)
+    for j in arr:
+        rst.append(str(input//j))
+        input = input%j
+    print(" ".join(rst))
+
+# join 함수
+# join 연속으로 들어오는 문자열을 특정 기준으로 만들어준다.
