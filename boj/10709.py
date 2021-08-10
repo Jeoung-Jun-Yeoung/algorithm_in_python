@@ -2,37 +2,22 @@ from sys import stdin
 
 h,w = map(int,stdin.readline().split())
 
-arr = [0 for _ in range(h)]
-rst_arr = []
+arr = [-1 for _ in range(h)]
+rst_arr = [list() for _ in range(h)]
 
 for i in range(h):
-    rst = ''
-    flag = 0
     arr[i] = list(map(str,stdin.readline().split()))
     temp = arr[i][0]
+    count = -1
     for j in temp:
-        if j == 'c':
-            rst = rst + '0'
-            rst = rst + ' '
-            flag = 1
-            count = 1
-        elif j != 'c' and flag ==1:
-            rst = rst + str(count)
-            rst = rst + ' '
+        if count != -1:
             count += 1
-        else:
-            rst = rst + 'n'
-            rst = rst + ' '
-    rst_arr.append(rst)
-    
+        if j == 'c':
+            count = 0
+        rst_arr[i].append(count)
+            
 for i in range(h):
-    temp = rst_arr[i]
-    for j in temp:
-        if j == ' ':
-            print(j,end='')
-        elif j == 'n':
-            print(-1,end='')
-        else:
-            print(int(j),end='')
+    for j in range(w):
+        print(rst_arr[i][j],end=' ')
     print()
         

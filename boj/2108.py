@@ -14,7 +14,7 @@ for i in range(n):
 
 arr.sort()
 
-avg = sum(arr) // len(arr)
+avg = round(sum(arr) / n)
 
 center = arr[len(arr)//2]
 
@@ -22,7 +22,8 @@ cnt = Counter(arr)
 freqt = cnt.most_common(2)
 fre = freqt[0][0]
 
-rang = abs(max(arr)) + abs(min(arr))
+rang = max(arr) - min(arr)
+
 if n == 1:
     rang = 0
     fre = arr[0]
@@ -33,8 +34,6 @@ if n == 1:
 else:
     if freqt[0][1] == freqt[1][1]:
         fre = freqt[1][0]
-    if max(arr) < 0 and min(arr) < 0:
-        rang = max(arr) + abs(min(arr))
     print(avg)
     print(center)
     print(fre)
