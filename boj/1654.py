@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-origin = int(input())
-
-str = input()
-arr = list(map(int,str.split()))
-
-
-m = max(arr)
-for i in range(0,origin):
-    arr[i] = arr[i]/m*100
-
-
-print(sum(arr,0.0)/len(arr))
-=======
 from sys import stdin
 
 k,n = map(int,stdin.readline().split())
@@ -36,4 +22,3 @@ while start <= end:
     else:
         end = mid - 1
 print(temp)
->>>>>>> 854d221704ef3d06198768803f6e5113abf0d921
