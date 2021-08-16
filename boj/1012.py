@@ -33,5 +33,3 @@ while dq:
                 n1 = tmp[0]
                 n2 = tmp[1]
                 if graph[n1][n2]:
-
-
