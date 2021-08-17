@@ -4,13 +4,18 @@ from collections import deque, defaultdict
 n, m = map(int, stdin.readline().split())
 
 graph = defaultdict(list)
+visted = [False] * (n + 1)
 
 
-def dfs(start):
+def bfs(start):
     visted[start] = True
-    for i in range(1, n+1):
-        if visted[start] != False and graph[start][i] == 1:
-            dfs(i)
+    dq = deque([start])
+    while dq:
+        node = dq.popleft()
+        for i in graph[node]:
+            if not visted[i]:
+                dq.append(i)
+                visted[i] = True
 
 
 for i in range(m):
@@ -18,15 +23,12 @@ for i in range(m):
     graph[n1].append(n2)
     graph[n2].append(n1)
 
-visted = [False] * (n + 1)
 
+print(graph)
 ck = 0
 
 for i in range(1, n+1):
     if not visted[i]:
-        dfs(i)
-        print(visted)
+        bfs(i)
         ck += 1
-    print(ck)
-
 print(ck)
