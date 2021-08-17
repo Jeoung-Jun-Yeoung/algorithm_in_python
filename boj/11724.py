@@ -1,4 +1,5 @@
 from sys import stdin
+<<<<<<< HEAD
 from collections import defaultdict, deque
 import sys
 sys.setrecursionlimit(10000)
@@ -29,3 +30,37 @@ for i in range(n):
         dfs(i)
         ck += 1
 print(ck)
+=======
+from collections import deque,defaultdict
+
+n,m = map(int,stdin.readline().split())
+
+graph = defaultdict(list)
+
+def dfs(start):
+    visted[start] = True
+    for i in range(1,n+1):
+        if visted[start] != False and graph[start][i] == 1:
+            dfs(i)
+
+
+for i in range(m):
+    n1,n2 = map(int,stdin.readline().split())
+    graph[n1].append(n2)
+    graph[n2].append(n1)
+
+visted = [False] * (n + 1)
+
+ck = 0
+
+for i in range(1,n+1):
+    if not visted[i]:
+        dfs(i)
+        print(visted)
+        ck += 1
+    print(ck)
+
+print(ck)
+
+
+>>>>>>> 5b4d40da5e2abad2a911f80dad78ebfb3928c1ba
