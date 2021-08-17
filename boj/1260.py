@@ -1,12 +1,12 @@
 from sys import stdin
-from collections import deque,defaultdict
+from collections import deque, defaultdict
 
-n,m,s = map(int,stdin.readline().split())
+n, m, s = map(int, stdin.readline().split())
 
 graph = defaultdict(list)
 
 for i in range(m):
-    n1,n2 = map(int,stdin.readline().split())
+    n1, n2 = map(int, stdin.readline().split())
     graph[n1].append(n2)
     graph[n2].append(n1)
 
@@ -36,6 +36,6 @@ while stack:
         continue
     dfs_visited[node] = 1
     dfs_rst.append(node)
-    stack.extend(sorted(graph[node],reverse=True))
+    stack.extend(sorted(graph[node], reverse=True))
 print(dfs_rst)
 print(rst)
