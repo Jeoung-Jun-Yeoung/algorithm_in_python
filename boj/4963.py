@@ -9,38 +9,35 @@ while True:
     w, h = map(int,stdin.readline().split())
     if w == 0 and h == 0:
         break
-    graph = [[0 for _ in range(w)] for _ in range(h)]
+    
     visted = [[0 for _ in range(w)] for _ in range(h)]
     Map = []
-    cordinate = []
+
     for i in range(h):
         part_of_map = list(map(int,stdin.readline().split()))
         Map.append(part_of_map)
+    
     dq = deque([])
     cnt = 0
-    print(visted)
-    print(Map)
+    
     for i in range(h):
         for j in range(w):
             if Map[i][j] == 1:
-                print(i,j)
+                if visted[i][j] == 1:
+                    continue
                 dq.append([i,j])
                 while dq:
-                    x,y = dq.popleft()
-                    print('x and y',x,y)
-                    print(visted)
-                    if visted[x][y] == 0:
-                        visted[x][y] = 1
+                    y,x = dq.popleft()
+                    
+                    if visted[y][x] == 0:
+                        visted[y][x] = 1
                         cnt += 1
-                        for index in range(8):
-                            nx = x + dx[index]
-                            ny = y + dy[index]
-                            if nx >= 0 and ny >= 0 and nx < w and ny < h:
-                                if Map[nx][ny] == 1 and visted[nx][ny] == 0:
-                                    dq.append([nx,ny])
+                    for index in range(8):
+                        ny = y + dy[index]
+                        nx = x + dx[index]
+                        if nx >= 0 and ny >= 0 and nx < w and ny < h:
+                            if Map[ny][nx] == 1 and visted[ny][nx] == 0:
+                                dq.append([ny,nx])
+                                visted[ny][nx] = 1
                                     
     print(cnt)
-
-
-
-    
