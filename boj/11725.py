@@ -9,24 +9,34 @@ dq = deque([])
 graph = defaultdict(list)
 depth = 0
 
+conect = defaultdict(int)
+
 for i in range(n-1):
     n1, n2 = map(int, stdin.readline().split())
-    graph[n1,depth].append(n2)
-    graph[n2,depth].append(n1)
+    graph[n1].append(n2)
+    graph[n2].append(n1)
 
 for key in graph.keys():
     graph[key].sort()
     # sort 이유
-print('g',graph)
 
+anw = defaultdict(int)
 
-dq = deque([1,depth])
-while dq:
-    print('dq',dq)
-    node = dq.popleft()
-    print('node',node)
+dq = deque([[1,depth]])
+
+while dq:   
+    node,pnode = dq.popleft()
+    anw[node] = pnode
     if visted[node] == 1:
         continue
     visted[node] = 1
-    dq.extend(graph[node,depth+1])
-print(graph)
+
+    for i in graph[node]:
+        if visted[i] == 1:
+            continue
+        dq.append([i,node])
+
+
+
+for i in range(2,n+1):
+    print(anw[i])
