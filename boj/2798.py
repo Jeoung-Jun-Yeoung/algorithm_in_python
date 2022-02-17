@@ -14,29 +14,14 @@ N, M = map(int, input().split())
 data = list(map(int, input().split()))
 
 data.sort()
-data.reverse()
-print(data)
-temp = data.pop()
-temp += data.pop()
-temp += data.pop()
 
+rst = 0
 
-print(temp)
-
-
-while True:
-    if(temp == M):
-        break
-    if(temp < M):
-        ex_temp = temp
-        temp = temp + data.pop()
-        continue
-    if(temp > M):
-        if((abs(ex_temp - M)) > abs((temp - M))):
-            break
-        else:
-            temp = ex_temp
-            break
-
-
-print(temp)
+for i in range(0, N - 2):
+    for j in range(i + 1, N - 1):
+        for k in range(j + 1, N):
+            triple = data[i] + data[j] + data[k]
+            # 새로 찾은 수가 기존 세 숫자 합보다는 크면서, M값보다는 작거나 같아야 한다.
+            if((rst < triple) and (triple <= M)):
+                rst = triple
+print(rst)
