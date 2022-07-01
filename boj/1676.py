@@ -1,6 +1,5 @@
 import math
 import sys
-import math
 
 num = str(math.factorial(int(sys.stdin.readline())))
 
