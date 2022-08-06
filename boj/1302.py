@@ -32,3 +32,6 @@ while SettleBook:
     if max == rst[1]:
         print(rst[0])
         break
+
+
+# 딕셔너리로 풀었으면 더 깔끔했다.
