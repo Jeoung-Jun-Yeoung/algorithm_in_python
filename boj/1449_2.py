@@ -9,3 +9,5 @@ taping = 0
 
 i = 0
 now = Crak.pop(0)
+
+# 하나씩 뽑아서 ? - > 다음꺼 비교
