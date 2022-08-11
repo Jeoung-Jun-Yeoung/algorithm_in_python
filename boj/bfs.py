@@ -1,18 +1,21 @@
 from collections import deque
-from collections import defaultdict
-dq = deque()
 
-s = 1
+adj = [[0] * 13 for _ in range(13)]
 
-dq = deque([s])
-y, x = 5, 1
-dq.append(5)
-n = dq.popleft()
-dq = deque([[y,x]])
+adj[0][1] = adj[0][7] = 1
+adj[1][2] = adj[1][5] = 1
 
 
-graph = defaultdict(list)
-for i in range(5):
-    n1, n2 = map(int)
-    graph[n1].append(n2)
-    graph[n2].append(n1)
+def bfs():
+    dq = deque()
+    # 덱을 만들어주고
+    dq.append(0)
+    # 루트노드를 넣어주면서 시작.
+    while dq:
+        now = dq.popleft()
+        for nxt in range(13):
+            if adj[now][nxt]:
+                dq.append(nxt)
+
+
+bfs()
