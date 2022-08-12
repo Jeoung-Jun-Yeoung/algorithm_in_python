@@ -10,7 +10,7 @@ def bfs():
     dq = deque()
     # 덱을 만들어주고
     dq.append(0)
-    # 루트노드를 넣어주면서 시작.
+    # root를 넣어주면서 시작
     while dq:
         now = dq.popleft()
         for nxt in range(13):
