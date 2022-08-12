@@ -25,30 +25,24 @@ def is_valid_coord(y, x):
 
 
 def bfs(start_y, start_x):
-    cnt = 0
+    # cnt = 1
+    Check[0][0] = True
     q = deque()
-    q.append((start_y, start_x))
+    q.append((start_y, start_x, 1))
     while len(q) > 0:
-        y, x = q.popleft()
+        y, x, d = q.popleft()
+
         if y == N - 1 and x == M - 1:
-            break
-        Check[y][x] = True
-        cnt += 1
-        flag = False
+            return d
+        nd = d + 1
+
         for k in range(4):
-            in_cnt = 0
             ny = y + dy[k]
             nx = x + dx[k]
-            if is_valid_coord(ny, nx) and not Check[ny][nx]:
-                if Graph[ny][nx]:
-                    flag = True
-                    in_cnt += 1
-                    print("ny nx", ny, nx)
-                    q.append((ny, nx))
-        if not flag or in_cnt > 1:
-            cnt -= 1
-        print()
-    print(cnt)
+            if is_valid_coord(ny, nx) and not Check[ny][nx] and Graph[ny][nx]:
+                Check[ny][nx] = True
+                print("ny,nx,nd : ", ny, nx, nd)
+                q.append((ny, nx, nd))
 
 
-bfs(0, 0)
+print(bfs(0, 0))
