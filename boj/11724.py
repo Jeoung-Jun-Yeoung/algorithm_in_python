@@ -8,7 +8,6 @@ visted = [False] * (n + 1)
 
 
 def bfs(start):
-    visted[start] = True
     dq = deque([start])
     while dq:
         node = dq.popleft()
@@ -24,11 +23,12 @@ for i in range(m):
     graph[n2].append(n1)
 
 
-print(graph)
 ck = 0
 
 for i in range(1, n+1):
     if not visted[i]:
-        bfs(i)
+        visted[i] = True
         ck += 1
+        bfs(i)
+
 print(ck)
