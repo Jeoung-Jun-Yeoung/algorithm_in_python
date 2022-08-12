@@ -1,7 +1,7 @@
 from collections import deque
 
 dy = (0, 1, 0, -1)
-dx = (1, 0, -1, 0)
+# dx = (1, 0, -1, 0)
 
 chk = [[False] * 100 for _ in range(100)]
 
