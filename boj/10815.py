@@ -21,6 +21,7 @@ for temp in isHave:
 
 # print(' '.join(map(str,ans)))
 # print(*ans)
+# 둘다 정답 출력
 
 for r in result:
     print(r, end=" ")
