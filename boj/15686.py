@@ -36,7 +36,7 @@ if M == 1:
     print(min(rst))
 # 각 가정마다 어떤 치킨집이 생존했을때 최단거리인지를 갱신
 else:
-    sd = [30000 for _ in range(len(home))]
+    sd = [2 * N for _ in range(len(home))]
     for v in combinations(chicken, M):
 
         # 생존한 치킨집을 뽑음
@@ -45,7 +45,6 @@ else:
             idx = 0
             for x, y in home:
                 d = abs(x - cx) + abs(y - cy)
-
                 if d < sd[idx]:
                     sd.pop(idx)
                     sd.insert(idx, d)
@@ -54,5 +53,3 @@ else:
 
         rst.append(sum(sd))
     print(min(rst))
-
-# 각각의 집부터 치킨집까지 탐색하면서 거리를 잰다.
