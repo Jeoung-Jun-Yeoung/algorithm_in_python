@@ -1,7 +1,3 @@
-import string
-from tkinter.tix import Tree
-
-
 text = input()
 
 tes = list(text)

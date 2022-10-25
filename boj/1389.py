@@ -23,7 +23,11 @@ for i in range(M):
 
 def bfs(start):
     chk = [False for _ in range(N)]
+    # temp = [False] * N
+    # print("temp ", temp)
     # print("chk ", chk)
+    # print("chk ", chk)
+    # 두가지 방식
 
     # check 배열 만드는거 연습좀 잘해보자.. 이건 좌표별이 아니라 노드기준이니까 1차원 체크배열이면 됌
     # print("chk ", chk)
@@ -38,18 +42,20 @@ def bfs(start):
 
     while q:
         s, nd = q.popleft()
+        nd = nd + 1
         for nxt in range(N):
-            temp = nd
             # 나랑 친구고, 방문안했으면 가본다.
             if rel[s][nxt] == 1 and not chk[nxt]:
                 chk[nxt] = True
                 # 방문여부 체크해주고 한친구에게 갓으니까 거리값 1올려줌
-                nd = nd + 1
                 # 토탈에 더해줌
                 tot += nd
                 q.append((nxt, nd))
-            # 이거 해주는 이유가 좀 중요한것 같다. 이거 안해주면 내 기준 1만 증가해야하는데 있는 친구수만큼 증가해버림
-            nd = temp
+            # 이거 해주는 이유가 좀 중요한것 같다.
+            # 이거 안해주면 내 기준 1만 증가해야하는데 있는 친구수만큼 증가해버림
+            # 즉 A - > B , A -> C 연결인 상황. 먼저 B랑 연결되서 nd += 1해줌
+            # 근데 C연결 재줄때 이미 B에서 증가된 값이 반영이되버림 그래서 친구가
+            # 바뀔떄마다 내 기준으로 초기화 해줘야함
 
     # print(f"{start}의 tot ", tot)
     return tot
