@@ -3,40 +3,56 @@ import copy
 
 N, M = map(int, input().split())
 
-maps = [input().replace(" ", "") for _ in range(N)]
-chicken = []
+maps = [list(input().replace(" ", "")) for _ in range(N)]
 
+chicken = []
+home = []
 
 for i in range(N):
     for j in range(N):
         if maps[i][j] == "2":
             chicken.append((i, j))
+        elif maps[i][j] == "1":
+            home.append((i, j))
 
-# 전체 치킨가게중 M개를 뽑음 조합으로 뽑음. 순서가 상관 없으니까
-# 없엘곳을 뽑는게 깔끔해보임..
-print(len(chicken))
+# maps구현 끝
 
-for v in combinations(chicken, abs(M - len(chicken))):
-    test_map = copy.deepcopy(maps)
-    close_list = []
-    for i in range(abs(M - len(chicken))):
-        print("each x y ", v[i][0], v[i][1])
+# 없엘곳을 뽑자.
+# 없엔다음에 집 기준으로 찾자.
 
-        test_map[v[i][0]][v[i][1]] = "0"
-        print("each x y ", v[i][0], v[i][1])
-        close_list.append((v[i][0], v[i][1]))
-        print()
-        print(test_map)
-        print()
-    print(close_list)
-    # 각각의 집부터 치킨집까지 탐색하면서 거리를 잰다.
+rst = []
 
+# 치킨집을 기준으로 각 집에서 최단거리의 합을 업데이트
+if M == 1:
+    for v in combinations(chicken, M):
+        # 생존한 치킨집을 뽑음
+        for cx, cy in v:
+            sd = []
+            # 해당 치킨집의 좌표를 얻어서
+            for x, y in home:
+                d = abs(x - cx) + abs(y - cy)
+                sd.append(d)
+        rst.append(sum(sd))
+    print(min(rst))
+# 각 가정마다 어떤 치킨집이 생존했을때 최단거리인지를 갱신
+else:
+    sd = [30000 for _ in range(len(home))]
+    for v in combinations(chicken, M):
 
-print("chicken ", chicken)
+        # 생존한 치킨집을 뽑음
+        for cx, cy in v:
+            # 해당 치킨집의 좌표를 얻어서
+            idx = 0
+            for x, y in home:
+                d = abs(x - cx) + abs(y - cy)
 
-# 5 3
-# 0 0 1 0 0
-# 0 0 2 0 1
-# 0 1 2 0 0
-# 0 0 1 0 0
-# 0 0 0 0 2
+                if d < sd[idx]:
+                    sd.pop(idx)
+                    sd.insert(idx, d)
+            # 각 집과의 거리를 계산해서 비교.
+                idx += 1
+
+        rst.append(sum(sd))
+    print(min(rst))
+
+# 각각의 집부터 치킨집까지 탐색하면서 거리를 잰다.
