@@ -1,4 +1,5 @@
 from collections import deque
+import math
 
 
 def solution(progresses, speeds):
@@ -17,10 +18,8 @@ def solution(progresses, speeds):
 
         if queue[0] >= 100:
             # queue에 기능개발이 완료된게 최소 1개 이상!
-            while True:
+            while queue:
                 idx = 0
-                if not queue:
-                    break
                 temp = queue.popleft()
                 if temp < 100:
                     queue.appendleft(temp)
@@ -38,6 +37,10 @@ def solution(progresses, speeds):
                 count = 0
 
     return answer
+
+
+def lcd(a, b):
+    return a*b // math.gcd(a, b)
 
 
 print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]))
