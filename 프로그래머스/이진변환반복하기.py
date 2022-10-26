@@ -22,10 +22,7 @@ def solution(s):
     while True:
         x = list(s)
 
-        print("x ", x)
-
         cnt += 1
-        cntZero = x.count("0")
 
         if x.count("0") != 0:
             zero += x.count("0")
@@ -47,20 +44,14 @@ def solution(s):
             toChange = toChange // 2
 
         temp_x.reverse()
-        print("이진변환결과 ", temp_x)
         isX = "".join(temp_x)
-        print("문자열변환결과 ", isX)
 
-        if cnt == 3:
-            break
         if isX == "1":
             break
-
         s = isX
-        print("next X = ", x)
-    print(f"count {cnt} zero {zero}")
-
+    answer.append(cnt)
+    answer.append(zero)
     return answer
 
 
-solution("110010101001")
+print(solution("110010101001"))
