@@ -23,7 +23,6 @@ def solution():
 
         q = deque()
         q.append((0, 0, 0))
-        flag = False
 
         while q:
             y, x, d = q.popleft()
