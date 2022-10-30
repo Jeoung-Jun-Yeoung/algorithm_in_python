@@ -1,0 +1,49 @@
+import re
+
+
+def solution(ingredient):
+    answer = 0
+
+    # stack을 이용한다.
+
+    # 1 -> 빵
+    # 2 -> 야채
+    # 3 -> 고기
+
+    # 거꾸로 뒤집고 빵을 만났으면 야채 고기 빵을 센다. 빵을 만나면 패스
+    # 한바퀴를 돌면 또 돈다. 언제까지 돌까 ? 빵이 없을때까지?
+
+    # 빵 - 야채 - 고기 - 빵 순서가 유지되어야 한다는게 포인트임.
+    # 각각 값을 체크하면서 완성되면 제거 ?
+    # 내가 지금 찾고있는 변수를 하나 만든다
+    # 시작은 빵으로 하고 빵을 찾으면 찾는 변수를 야채로 바꾸고, 찾으면 햄으로 바꾸고, 찾으면 빵으로 바꾸고, 완성 시킴?
+
+
+#     burger = 0
+#     cnt = 0
+#     while 1 in ingredient:
+#         bck = 0
+#         vck = 0
+#         hck = 0
+#         flag = False
+
+
+#         for item in ingredient:
+
+
+#         cnt += 1
+
+#     print(burger)
+
+    # 임시 재료 보관소를 만든다?
+
+    ingredient = "".join([str(ch) for ch in ingredient])
+    # 못찾으면 -1
+    # 찾으면 해당 인덱스
+    # -1 이 아니라는건 찾았다는거
+    while ingredient.find("1231") != -1:
+        ingredient = ingredient.replace("1231", "")
+        answer += 1
+    return answer
+
+# 문자열로 바꿔서 푸니까 41점
