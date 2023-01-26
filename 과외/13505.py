@@ -14,4 +14,4 @@ def main():
     for num in Number:
         bit = num // 2
         bitMap.append(bit)
-        ^
+        # ^
