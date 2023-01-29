@@ -32,11 +32,11 @@ for i in range(N):
     RstWord = ''
 
     for Word in AllWordList:
-        two_flag = False
-        # print(f"Word {Word}")
+
         if Word[0] not in FnDic:
             # 단어의 첫 글자가 등록되어 있지 않은 경우.
             # 등록을 시킨다.
+            # 등록시킨 경우 AllWordList에 남아있는거까지 전부 쓸어담아야함. 매우중요한 힌틍니듯!@!!
             FnDic[Word[0].upper()] = True
             FnDic[Word[0].lower()] = True
             # 이후에는 괄호를 씌우고 빠져 나가면 됨.
@@ -45,11 +45,13 @@ for i in range(N):
             for i in range(1, len(Word)):
                 RstWord += Word[i]
             flag = True
-            two_flag = True
-        if not two_flag:
-            RstWord += Word
-            # RstWord에 값을 담음 [N]ew 까지 만든거임 그럼 담에 window는 그냥 붙여줘야함
-    RstList.append(RstWord)
+        else:
+            RstWord += " "+Word
+            # RstWord에 값을 담음 [N]ew는 만든 상황.
+
+    if flag:
+        # 이 조건에서 걸린다. Font는 위 조건에서 못거른 단어인데 일단 RstWord에 넣어줬으니 여기서 어팬드가 되고 나중에 원본이 변환됨 ㅠ
+        RstList.append(RstWord)
     if not flag:
         # 만약 첫 단어에서 못 걸렀다면? -> 이때는 순서대로 보면 된다.
 
