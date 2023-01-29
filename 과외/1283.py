@@ -24,13 +24,16 @@ for i in range(N):
     # 모든게 지정되면 그냥 둔다.
     AllWordList = list(input().split())
 
-    print(f"All {AllWordList}")
+    # print(f"All {AllWordList}")
 
     # 모든 단어의 첫글자만 보면 된다. 첫글자가 등록되어 있지 않다면 등록하고 다음꺼 봄
     # 만약 첫글자가 등록되어 있다면? 다음 단어의 첫 글자를 본다. 이렇게 모든 단어의 첫 글자를 봤으면 그담부터는 차례대로 보면서 등록한다.
     flag = False
+    RstWord = ''
+
     for Word in AllWordList:
-        print(f"Word {Word}")
+        two_flag = False
+        # print(f"Word {Word}")
         if Word[0] not in FnDic:
             # 단어의 첫 글자가 등록되어 있지 않은 경우.
             # 등록을 시킨다.
@@ -38,18 +41,37 @@ for i in range(N):
             FnDic[Word[0].lower()] = True
             # 이후에는 괄호를 씌우고 빠져 나가면 됨.
 
-            RstWord = '['+Word[0]+']'
+            RstWord += ' ['+Word[0]+']'
             for i in range(1, len(Word)):
                 RstWord += Word[i]
-            RstList.append(RstWord)
             flag = True
-            print(f"RstList {RstList}")
-            break
+            two_flag = True
+        if not two_flag:
+            RstWord += Word
+            # RstWord에 값을 담음 [N]ew 까지 만든거임 그럼 담에 window는 그냥 붙여줘야함
+    RstList.append(RstWord)
     if not flag:
         # 만약 첫 단어에서 못 걸렀다면? -> 이때는 순서대로 보면 된다.
-        result = ''.join(s for s in AllWordList)
-        print(f"result {result}")
 
-    print(RstList)
+        result = ' '.join(s for s in AllWordList)
+        rst = list(result)
+        for i in range(len(rst)):
+            if rst[i] not in FnDic:
+                FnDic[rst[i].upper()] = True
+                FnDic[rst[i].lower()] = True
+                rst.insert(i, '[')
+                # print(f"rst after {rst}")
+                rst.insert(i + 2, ']')
+                # print(f"rst is {rst}")
+                break
+        result = "".join(s for s in rst)
+        RstList.append(result)
 
-    # 등록했으면 등록한 ch에 괄호를 씌워야 함.
+for s in RstList:
+    if s[0] == ' ':
+        s = s[1:]
+    print(s)
+# 처음부터 쭉 보면서 dic에 없다면 추가해주면 됨.
+# print(f"rst {RstList}")
+
+# 등록했으면 등록한 ch에 괄호를 씌워야 함.
