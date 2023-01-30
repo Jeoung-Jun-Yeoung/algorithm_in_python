@@ -1,1 +1,1 @@
-a_a_a_A
+longAndMnemonicIdentifier
