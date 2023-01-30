@@ -50,6 +50,7 @@ for i in range(N):
             # RstWord에 값을 담음 [N]ew는 만든 상황.
 
     if flag:
+        # New [f]ile
         # 이 조건에서 걸린다. Font는 위 조건에서 못거른 단어인데 일단 RstWord에 넣어줬으니 여기서 어팬드가 되고 나중에 원본이 변환됨 ㅠ
         RstList.append(RstWord)
     if not flag:

@@ -1,9 +1,1 @@
-8
-New window
-New file
-Copy
-Undo
-Format
-Font
-Cut
-Paste
+a_a_a_A
