@@ -53,7 +53,7 @@ a.replace("H", "Z")
 
 # 리스트에 있는 단어를 문자열로 바꾸는법
 b = ["H", "e", "l", "l", "o"]
-c = "".join(b)
+c = "_".join(b)
 print(c)
 d = list(c)
 
