@@ -68,3 +68,21 @@
 # alpha = list(set(alpha))
 
 # 2차원 리스트인 경우 list(set(map(tuple,lst)))
+
+# 배열 정렬
+
+# arr.sort()
+# arr.sort(reverse=True)
+# arr.sort(key=lambda x:(x[0], x[1]))
+
+# 조합
+# from itertools import combinations
+# print(list(combinations([1,2,3,4],3)))
+
+# 순열
+# from itertools import permutations
+# print(list(permutations(arr, M)))
+
+# counter
+# from itertools import Counter
+# val = Counter(arr).most_common()
