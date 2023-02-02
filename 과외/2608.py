@@ -20,6 +20,12 @@
 # 로마 숫자로 이루어진 두 수를 입력받아 그 둘을 더한 값을 아라비아 숫자와 로마 숫자로 출력하는 프로그램을 작성하시오.
 
 def checkSign(sign):
+    # signDict = {
+    #     'I': 1,
+
+    # }
+    # return signDict.get(sign, False)
+    # 요렇게 하면 리팩토링 가능
     if sign == 'I':
         return 1
     elif sign == 'V':
