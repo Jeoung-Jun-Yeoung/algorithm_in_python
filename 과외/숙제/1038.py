@@ -4,73 +4,23 @@ n = int(input())
 # N번째 감소하는 수를 출력하라
 # 0은 0번째 감소하는 수. 1은 1번째 감소하는 수
 
-# downNumList = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 20, 21, 30, 31, 32,
-#                40, 41, 42, 43, 50, 51, 52, 53, 54, 60, 61, 62, 63, 64, 65)
-# print(downNumList[n])
-
-# 0, 1, 2, 3, 4,
-# 5, 6, 7, 8, 9,
-# 20, 21,
-# 30, 31, 32,
-# 40, 41, 42, 43,
-# 50, 51, 52, 53, 54
-# 60, 61, 62, 63, 64, 65
-# 70, 71, 72, 73, 74, 75, 76,
-# 80, 81, 82, 83, 84, 85, 86, 87,
-# 90, 91, 92, 93, 94, 95, 96, 97, 98
-# 0부터 세니까 -1을 해줘야함.
-
-
-def placeNum(number, first, second):
-    pass
-    for i in range(number, number + 9, 1):
-        if (number // first) > (number // second):
-            downNumList.append(number)
-# 210
-
-
 downNumList = [
     0, 1, 2, 3, 4,
-    5, 6, 7, 8, 9,
-    20, 21,
-    30, 31, 32,
-    40, 41, 42, 43,
-    50, 51, 52, 53, 54,
-    60, 61, 62, 63, 64, 65,
-    70, 71, 72, 73, 74, 75, 76,
-    80, 81, 82, 83, 84, 85, 86, 87,
-    90, 91, 92, 93, 94, 95, 96, 97, 98
+    5, 6, 7, 8, 9
 ]
-# 2자리 수까지 넣어주고 시작한다.
 
-if n > 10:
-    n = n - 1
-if len(downNumList) > n:
+for i in downNumList:
+    test = i % 10
+    # print(f'test {test}')
+    for j in range(10):
+        if test > j:
+            downNumList.append(i * 10 + j)
+# print(downNumList)
+if n >= len(downNumList):
+    print(-1)
+else:
     print(downNumList[n])
+# 조건은 뭐가 될 수 있을까?
+# 앞자리가 뒷자리보다 커야한다는 조건이 있음. 같아도 안된다. (앞자리수 > 뒷자리수)
 
-while True:
-
-    # num = 20
-    # for i in range(num, num+9, 1):
-    #     # i값을 갖고 판단한다. for문이 끝나면 10을 더해줌.
-    #     print(i//10)
-
-    # downNumList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    # if n > 10:
-    #     n = n - 1
-    # # 0번째가 있으니까 -1로 순서 보정을 해준다.
-    # num = 20
-    # while len(downNumList) < n:
-    #     for i in range(num, 0, num+9):
-    #         print(num)
-    # print(n)
-    # print(downNumList[n])
-
-    # 몇번째 감소하는 수인지를 알면 된다.
-    # 이거까지 생각하는것도 오래걸렸음
-
-    # 입력받은 N까지 감소하는 수 list를 만든다. 이후 N까지 탐색.
-    # 조건은 뭐가 될 수 있을까?
-    # 앞자리가 뒷자리보다 커야한다는 조건이 있음. 같아도 안된다. (앞자리수 > 뒷자리수)
-
-    # 숫자를 스플릿 해서 문자로 만듬. 각각 분리 한다음에 대소비교를 해준다. 이후 조건 만족시 append하면 된다?
+# 숫자를 스플릿 해서 문자로 만듬. 각각 분리 한다음에 대소비교를 해준다. 이후 조건 만족시 append하면 된다?
