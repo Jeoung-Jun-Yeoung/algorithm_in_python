@@ -43,7 +43,7 @@ if max(field)[1] == west:
     # 가장긴게 서쪽
     S = 0
     N = 0
-    Si = 0
+    Si =
     Ni = 0
     # 이때 옆에 있는 북쪽과 남쪽 둘레를 찾는다.
     for val, dir, i in field:
