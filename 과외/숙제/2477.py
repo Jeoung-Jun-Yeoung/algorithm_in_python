@@ -72,7 +72,7 @@ def cal_field(maxLineDir, field, n):
         if S > N:
             part1 = max(field)[0] * N
             for val, dir, i in field:
-                if dir == west and (abs(i - Ni) == 1 or abs(i - Ni) == 5):
+                if dir == west and (abs(i - Si) == 1 or abs(i - Si) == 5):
                     part2 *= val
                 if dir == north and i != Ni:
                     part2 *= val
@@ -124,7 +124,6 @@ field = searchMaxDir(field)
 # 여기서부터는 아까 로직의 순서에 따라서 값을 찾아 줘야 한다.
 
 # print(max(field)[0])
-
 # 순서는 최대 5차이거나 1차이면 됌.
 # 서쪽인경우
 
