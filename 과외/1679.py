@@ -41,14 +41,14 @@ def bfs(subin, subinSister):
     if subinSister in [jp, wp, wm]:
         return count
 
-    q.append([count, jump(subin), walkPlus(subin), walkMin(subin)])
+    q.append([count, jp, wp, wm])
     # https://programmers-story.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-deque-TypeError-cannot-unpack-non-iterable-int-object
     #  선언과 하면 오류남..
     # 일단 처음에는 다 넣어줌
 
     while q:
         count, nowSubinJump, nowSubinP, nowSubinM = q.popleft()
-
+        print(f'count {count} nJ {nowSubinJump} nP {nowSubinP} nM {nowSubinM}')
         ck = [nowSubinJump, nowSubinP, nowSubinM]
 
         if subinSister in ck:
@@ -62,9 +62,5 @@ def bfs(subin, subinSister):
 
 subin, subinSister = map(int, input().split())
 
-# 걷기 + 1
-# 순간이동 * 2
-# print(subin, subinSister)
-# print(excution(subin, subinSister))
 count = bfs(subin, subinSister)
 print(count)
