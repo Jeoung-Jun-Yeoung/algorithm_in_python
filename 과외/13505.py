@@ -4,6 +4,7 @@
 # 해쉬를 하면 원본 데이터는 소실된다.
 # 해쉬를 한 후에는 같은지 아닌지만 판단 가능.
 def Trie():
+    pass
 
 
 def main():
@@ -15,3 +16,7 @@ def main():
         bit = num // 2
         bitMap.append(bit)
         # ^
+
+
+if __name__ == '__main__':
+    main()
