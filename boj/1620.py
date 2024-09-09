@@ -15,6 +15,7 @@ for _ in range(n):
     poketmon.append(name)
 
 
+# 키 밸류를 둘다 저장
 for i in range(m):
     if i == m - 1:
         question = input()
